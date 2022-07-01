@@ -1,8 +1,7 @@
 import styled from "@emotion/styled"
-import ReactQuill from 'react-quill'
+import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css'; // ES6
-
-
+const ReactQuill = dynamic(()=>import("react-quill"),{ssr: false})
 
 export const Section = styled.section`
     margin : 15px 0;

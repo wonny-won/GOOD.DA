@@ -1,6 +1,8 @@
 import * as S from './newFleaBoard.styled'
+import { AppProps } from 'next/app'
 
-export default function NewFleaBoardUI(){
+export default function NewFleaBoardUI(props:AppProps){
+    console.log(props)
     const category = ["패션,잡화","뷰티,미용","생활가전","생활,가공식품","스포츠,레저","반려동물용품","도서,티켓,음반","가구","기타"]
     const payway = ["현금결제","굳다페이","현금결제,굳다페이"]
     return(
