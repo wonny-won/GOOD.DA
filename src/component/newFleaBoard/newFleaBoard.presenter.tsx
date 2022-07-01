@@ -7,6 +7,7 @@ export default function NewFleaBoardUI(props:AppProps){
     const payway = ["현금결제","굳다페이","현금결제,굳다페이"]
     return(
         <S.Wrapper>
+            <form onSubmit={props.handleSubmit(props.onSubmit)}>
             {/* 이미지 섹션 */}
             <S.Section>
                 <S.H1>상품 이미지를 등록해주세요</S.H1>
@@ -18,7 +19,7 @@ export default function NewFleaBoardUI(props:AppProps){
             {/* 제목 섹션 */}
             <S.Section>
                 <S.H1>제목을 입력해주세요</S.H1>
-                <S.TitleInput type="text"/>
+                <S.TitleInput type="text" {...props.register('title')}/>
             </S.Section>
             {/* 가격, 카테고리 섹션 */}
             <S.Section>
@@ -54,6 +55,8 @@ export default function NewFleaBoardUI(props:AppProps){
                         <option>네고 불가능</option>
                     </S.paySelect>
             </S.Section>
+            <button>보내기</button>
+            </form>
         </S.Wrapper>
     )
 }
