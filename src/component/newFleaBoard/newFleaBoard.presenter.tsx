@@ -1,7 +1,6 @@
 import * as S from './newFleaBoard.styled'
-import { AppProps } from 'next/app'
 
-export default function NewFleaBoardUI(props:AppProps){
+export default function NewFleaBoardUI(props){
     console.log(props)
     const category = ["패션,잡화","뷰티,미용","생활가전","생활,가공식품","스포츠,레저","반려동물용품","도서,티켓,음반","가구","기타"]
     const payway = ["현금결제","굳다페이","현금결제,굳다페이"]
@@ -24,11 +23,11 @@ export default function NewFleaBoardUI(props:AppProps){
             {/* 가격, 카테고리 섹션 */}
             <S.Section>
                 <S.H1>가격과 카테고리를 입력해주세요</S.H1>
-                <S.Priceinput type="text"/>
-                <S.CategorySelect>
+                <S.Priceinput type="text" {...props.register('price')}/>
+                <S.CategorySelect {...props.register('category')}>
                     {
                      category.map((item)=>(
-                        <option>{item}</option>
+                        <option key={item}>{item}</option>
                      ))
                     }
                 </S.CategorySelect>
@@ -45,12 +44,12 @@ export default function NewFleaBoardUI(props:AppProps){
             {/* 거래방식 섹션 */}
             <S.Section>
                 <S.H1>거래방식을 선택해주세요</S.H1>
-                    <S.paySelect>
+                    <S.paySelect {...props.register('payWay')}>
                     {
-                        payway.map((item)=>(<option>{item}</option>))
+                        payway.map((item)=>(<option key={item}>{item}</option>))
                     }
                     </S.paySelect>
-                    <S.paySelect>
+                    <S.paySelect {...props.register('negoSelect')}>
                         <option>네고 가능</option>
                         <option>네고 불가능</option>
                     </S.paySelect>
