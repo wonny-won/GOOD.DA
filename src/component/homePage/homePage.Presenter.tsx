@@ -6,7 +6,7 @@ import GoodTipArticle from '../../units/goodTipArticle/article'
 export default function HomePageUI(){
     const icon = ["다이어트","건강기능","운동보조","뷰티기능"]
     const icon2 = ["한끼식사","부기차","임산부","어린이"]
-    const ranking = [1,2,3,4,5]
+    const ranking = ["1위","2위","3위","4위","5위"]
     return(
         <>
             <Head>
