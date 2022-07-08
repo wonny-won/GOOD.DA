@@ -1,20 +1,18 @@
-import styled from "@emotion/styled"
+import * as S from './ranking.style'
+import { homeProps } from '../../component/homePage/homePage.types'
 
-const Img = styled.div`
-    width: 60px;
-    height: 60px;
-    border: 1px solid rgba(0,0,0, 0.88);
-`
-
-export default function RankingUnits(props){
+export default function RankingUnits(props:homeProps){
     return(
-        <Img>
-            <div>img</div>
-            <div>
-                <div>{props.brandName}</div>
-                <div># {props.category}</div>
-            </div>
-            <div>{props.product}</div>
-        </Img>
+        <S.Wrapper>
+            <S.Img src={props.image}/>
+            <S.ContentWrapper>
+                <S.TitleWrap>
+                    <S.BrandName>{props.brandName}</S.BrandName>
+                    <S.Category> <span style={{fontWeight:100}}>#</span>{props.category}</S.Category>
+                </S.TitleWrap>
+                <S.Product>{props.product}</S.Product>
+            </S.ContentWrapper>
+            <img src="/image/bookmark_grey.svg" />
+        </S.Wrapper>
     )
 }
