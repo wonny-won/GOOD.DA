@@ -11,6 +11,7 @@ export default function ProductWriteUI(props : ProductInput){
                 <meta name="굳다 보조제 성분비교, 리뷰" content="다이어트,운동부스터 영양제/보조제 성분 비교" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
+
             <form onSubmit={props.handleSubmit(props.onSubmit) } >
                 <S.Title>상품 이미지를 등록해주세요</S.Title>
                     <S.ImgSection>
@@ -35,7 +36,7 @@ export default function ProductWriteUI(props : ProductInput){
                         <S.HiddenTitle>카테고리</S.HiddenTitle>
                             <S.CategorySelect {...props.register("category")}>
                                 {
-                                // key값에 index를 준 이유는 category 배열은 변할일이 없고 변해도 개수가 8개로 정해져 있기 때문입니다.
+                                // key값에 index를 준 이유는 category 배열은 변할일이 없고 변해도 개수가 8개로 정해져있기 때문입니다.
                                 category.map((item,index)=>(<option key={index}>{item}</option>))
                                 }
                             </S.CategorySelect>
