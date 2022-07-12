@@ -11,7 +11,7 @@ export default function ProductWriteUI(props : ProductInput){
                 <meta name="굳다 보조제 성분비교, 리뷰" content="다이어트,운동부스터 영양제/보조제 성분 비교" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
-            <form onSubmit={props.handleSubmit(props.onSubmit)}>
+            <form onSubmit={props.handleSubmit(props.onSubmit) } >
                 <S.Title>상품 이미지를 등록해주세요</S.Title>
                     <S.ImgSection>
                         <label htmlFor="fileTag"><img src="/image/plus-circle.svg"/></label>
