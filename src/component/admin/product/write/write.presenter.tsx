@@ -7,7 +7,7 @@ export default function ProductWriteUI(props : Formtype){
     return(
         <>
             <Head>
-                <title>굳다 - 어드민 | 상품작성 페이지</title>
+                <title>굳다 - 어드민 | 상품작성,수정 페이지</title>
                 <meta name="굳다 보조제 성분비교, 리뷰" content="다이어트,운동부스터 영양제/보조제 성분 비교" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
@@ -16,7 +16,8 @@ export default function ProductWriteUI(props : Formtype){
                 <S.Title>상품 이미지를 등록해주세요</S.Title>
                     <S.ImgSection>
                         <label htmlFor="fileTag"><img src="/image/plus-circle.svg"/></label>
-                        <S.Input type="file" id="fileTag" hidden={true}/>
+                        <S.Input type="file" id="fileTag" hidden={true} onChange={props.onChangeImg}/>
+                        <img src={`https://firebasestorage.googleapis.com/v0/b/goodda-9aced.appspot.com/o/${props.image}?alt=media&token=55249e4e-a583-4b39-893d-d396efd23411`}/>
                     </S.ImgSection>
                 <S.Title>제목과 브랜드를 입력해주세요</S.Title>
                     <section>
