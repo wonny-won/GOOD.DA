@@ -1,8 +1,8 @@
 import Head from "next/head"
 import * as S from './writer.style'
-import { ProductInput } from "./write.types"
+import { Formtype } from "./write.types"
 
-export default function ProductWriteUI(props : ProductInput){
+export default function ProductWriteUI(props : Formtype){
     const category = ["다이어트","건강기능","운동보조","뷰티기능","한끼식사","부기차","임산부","어린이"]
     return(
         <>

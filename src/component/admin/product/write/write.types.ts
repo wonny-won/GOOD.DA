@@ -1,6 +1,16 @@
-import { UseFormReturn, SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
+import { UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 export interface ProductInput {
-   register : UseFormReturn['register'];
+   brand: string;
+   product: string;
+   price: Number;
+   category:string;
+   productDescription:string;
+   ingredient1:string;
+   ingredient2:string;
+   ingredient3:string;
+  }
+  export interface Formtype {
+   register : UseFormRegister<ProductInput>;
    handleSubmit : UseFormHandleSubmit<ProductInput>;
-   onSubmit :SubmitHandler<ProductInput>;
+   onSubmit : (data: any) => Promise<void>
   }
