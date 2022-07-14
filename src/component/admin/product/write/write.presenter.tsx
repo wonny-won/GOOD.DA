@@ -19,7 +19,7 @@ export default function ProductWriteUI(props : Formtype){
                             <label htmlFor="fileTag"><img src="/image/plus-circle.svg"/></label>
                             <S.Input type="file" id="fileTag" hidden={true} onChange={props.onChangeImg}/>
                         </S.ImgSection>
-                        <S.UploadImage src={`https://firebasestorage.googleapis.com/v0/b/goodda-9aced.appspot.com/o/image%2F${props.image?.name}?alt=media&token`} image={props.image}/>
+                        {props.image && <S.UploadImage src={`https://firebasestorage.googleapis.com/v0/b/goodda-9aced.appspot.com/o/image%2F${props.image?.name}?alt=media&token`} image={props.image}/>}
                     </S.UploadImageWrap>
                 <S.Title>제목과 브랜드를 입력해주세요</S.Title>
                     <section>
