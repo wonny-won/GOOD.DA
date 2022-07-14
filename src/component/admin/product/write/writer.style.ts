@@ -49,6 +49,15 @@ export const Input = styled.input`
     border : none;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 `
+export const UploadImageWrap = styled.div`
+    display: flex;
+`
+export const UploadImage = styled.img`
+    width : 103px;
+    height : 103px;
+    margin-left: 20px;
+    display: ${(props) => ( props.image || "none")}
+`
 export const ButtonWrap = styled.div`
     margin-top: 50px;
     display: flex;

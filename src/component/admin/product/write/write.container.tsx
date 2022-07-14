@@ -16,14 +16,14 @@ export default function ProductWrite(){
         console.log(file)
         setImage(file)
         const storage = getStorage();
-        const imageUpload = ref(storage, file.name); 
+        const imageUpload = ref(storage, `image/${file.name}`); 
         uploadBytes(imageUpload, file)
     }
     console.log(image)
     // 상품 등록 함수
     const onSubmit = async (data : any)=>{
         const db = getFirestore(fireBaseApp)
-        await addDoc(collection(db, "productWrite"),{ ...data, image: image })
+        await addDoc(collection(db, "productWrite"),{ ...data })
         console.log(data)
     }
 
