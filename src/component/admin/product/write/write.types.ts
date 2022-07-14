@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, HtmlHTMLAttributes } from 'react';
 import { UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 export interface ProductInput {
    brand: string;
@@ -16,5 +16,5 @@ export interface ProductInput {
    handleSubmit : UseFormHandleSubmit<ProductInput>;
    onSubmit : (data: any) => Promise<void>;
    onChangeImg: (event:ChangeEvent<HTMLInputElement>)=>void;
-   image: string;
+   image? : string | HTMLInputElement | undefined;
   }

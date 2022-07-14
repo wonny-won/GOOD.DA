@@ -12,11 +12,11 @@ export default function ProductWrite(){
     // 이미지 업로드
     const [image,setImage] = useState("")
     const onChangeImg = (event:ChangeEvent<HTMLInputElement>)=>{
-        const file = event.target.files?.[0]
+        const file = event.target.files?.[0] 
         console.log(file)
         setImage(file)
         const storage = getStorage();
-        const imageUpload = ref(storage, `image/${file.name}`); 
+        const imageUpload = ref(storage, `image/${file?.name}`); 
         uploadBytes(imageUpload, file)
     }
     console.log(image)
