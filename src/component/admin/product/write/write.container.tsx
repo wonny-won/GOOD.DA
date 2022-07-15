@@ -12,14 +12,28 @@ export default function ProductWrite(){
     // 이미지 업로드,URL다운로드 -> db에 보내줘야 해
     const [image,setImage] = useState("")
     // const [imageUrl,setImageUrl] =useState("")
-    const onChangeImg = (event:ChangeEvent<HTMLInputElement>)=>{
-        const file = event.target.files?.[0] 
-        console.log(file)
+    const onChangeImg = async (event:ChangeEvent<HTMLInputElement>)=>{
+        const file = event.target.files?.[0]
         setImage(file)
         const storage = getStorage();
-        const imageUpload = ref(storage, `image/${file?.name}`); 
-        uploadBytes(imageUpload, file)
-        // const url = getDownloadURL(ref(storage, `image/${file?.name}`))
+        const imageUpload = ref(storage, `admin/${file?.name}`); 
+        await uploadBytes(imageUpload, file)
+        
+        getDownloadURL(ref(storage, `admin/${file?.name}`))
+        .then((param) => {
+            console.log(param)
+            const xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = (event) => {
+              const blob = xhr.response;
+            };
+            xhr.open('GET', param);
+            xhr.send();
+            console.log("여기까지 완료", xhr)
+          })
+          .catch((error) => {
+            console.log("이미지 다운 실패 오류",error)
+          });
     }
     console.log(image)
     // 상품 등록 함수
