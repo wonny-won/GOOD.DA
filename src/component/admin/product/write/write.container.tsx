@@ -21,7 +21,6 @@ export default function ProductWrite(){
         
         getDownloadURL(ref(storage, `admin/${file?.name}`))
         .then((param) => {
-            console.log(param)
             const xhr = new XMLHttpRequest();
             xhr.responseType = 'blob';
             xhr.onload = (event) => {
@@ -35,7 +34,6 @@ export default function ProductWrite(){
             console.log("이미지 다운 실패 오류",error)
           });
     }
-    console.log(image)
     // 상품 등록 함수
     const onSubmit = async (data : any)=>{
         const db = getFirestore(fireBaseApp)
