@@ -1,4 +1,4 @@
-import { ChangeEvent, HtmlHTMLAttributes } from 'react';
+import { ChangeEvent } from 'react';
 import { UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 export interface ProductInput {
    brand: string;
