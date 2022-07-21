@@ -5,13 +5,14 @@ import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { getStorage,ref,uploadBytes,getDownloadURL } from "firebase/storage";
 import { ProductInput } from "./write.types";
 import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
 
 
 export default function ProductWrite(){
     const { register, handleSubmit } = useForm<ProductInput>()
+    const router = useRouter()
     // 이미지 업로드,URL다운로드 -> db에 보내줘야 해
     const [image,setImage] = useState("")
-    // const [imageUrl,setImageUrl] =useState("")
     const onChangeImg = async (event:ChangeEvent<HTMLInputElement>)=>{
         const file = event.target.files?.[0]
         setImage(file)
@@ -38,6 +39,7 @@ export default function ProductWrite(){
     const onSubmit = async (data : any)=>{
         const db = getFirestore(fireBaseApp)
         await addDoc(collection(db, "productWrite"),{ ...data })
+        router.push ('/productList')
         console.log(data)
     }
 

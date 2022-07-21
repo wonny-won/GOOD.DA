@@ -55,7 +55,7 @@ export default function ProductWriteUI(props : Formtype){
                         <S.Input type="text" placeholder=" 3. 구성성분을 입력해주세요" {...props.register("ingredient3")} />
                     </S.Section>
                 <S.ButtonWrap>
-                    <S.SubmitButton>저장하기</S.SubmitButton>
+                <S.SubmitButton>저장하기</S.SubmitButton>
                     <S.CancelButton type="button">삭제하기</S.CancelButton>
                 </S.ButtonWrap>
             </form>
