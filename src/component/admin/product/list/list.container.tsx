@@ -1,20 +1,26 @@
 import { collection, getDocs , getFirestore } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fireBaseApp } from "../../../../../pages/_app";
 import AdminProductListUI from "./list.presenter";
 
 
 export default function AdminProductList(){
+    const [data,setData] = useState<never[] | any>([])
+    const dataList:any = []
     useEffect(()=>{
-        const getDocs = async ()=>{
+        const getList = async ()=>{
             const db = getFirestore(fireBaseApp)
-            const querySnapshot =  getDocs(collection(db, "cities"));
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-                });
-    
+            const querySnapshot = await getDocs(collection(db, "productWrite"))
+            querySnapshot.forEach((doc:any) => {
+                dataList.push({id:doc.id,productInof:{...doc.data()}})
+                setData([...dataList])
+            })
         }
+        getList()
     },[])
-    return <AdminProductListUI/>
+
+
+
+
+    return <AdminProductListUI data={data}/>
 }
