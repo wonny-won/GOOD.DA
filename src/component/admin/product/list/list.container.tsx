@@ -19,8 +19,5 @@ export default function AdminProductList(){
         getList()
     },[])
 
-
-
-
     return <AdminProductListUI data={data}/>
 }

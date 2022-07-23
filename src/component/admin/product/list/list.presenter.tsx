@@ -1,7 +1,5 @@
 import RankingUnits from "../../../../units/ranking/ranking";
-export default function AdminProductListUI(props:any){
-    console.log(props.data[1])
-    
+export default function AdminProductListUI(props:any){    
     return(
         <>
         {
