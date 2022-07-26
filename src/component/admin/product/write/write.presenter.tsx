@@ -17,7 +17,7 @@ export default function ProductWriteUI(props : Formtype){
                     <S.UploadImageWrap>
                         <S.ImgSection>
                             <label htmlFor="fileTag"><img src="/image/plus-circle.svg"/></label>
-                            <S.Input type="file" id="fileTag" hidden={true} onChange={props.onChangeImg}/>
+                            <S.Input type="file" id="fileTag" hidden={true} onChange={props.onChangeImg} />
                         </S.ImgSection>
                         {props.image && <S.UploadImage src={`https://firebasestorage.googleapis.com/v0/b/goodda-9aced.appspot.com/o/admin%2F${props.image?.name}?alt=media&token`} image={props.image}/>}
                     </S.UploadImageWrap>
