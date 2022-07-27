@@ -11,25 +11,19 @@ import { useRouter } from "next/router";
 export default function ProductWrite(){
     const { register, handleSubmit } = useForm<ProductInput>()
     const router = useRouter()
-    // 이미지 업로드,URL다운로드 -> db에 보내줘야 해
+    // 이미지 업로드,URL받기 -> db에 보내주기용
     const [image,setImage] = useState("")
+    const [storageUrl,setStorageUrl] = useState("")
     const onChangeImg = async (event:ChangeEvent<HTMLInputElement>)=>{
         const file = event.target.files?.[0]
         setImage(file)
         const storage = getStorage();
         const imageUpload = ref(storage, `admin/${file?.name}`); 
         await uploadBytes(imageUpload, file)
-        
+        // URL받아오기
         getDownloadURL(ref(storage, `admin/${file?.name}`))
         .then((param) => {
-            const xhr = new XMLHttpRequest();
-            xhr.responseType = 'blob';
-            xhr.onload = (event) => {
-              const blob = xhr.response;
-            };
-            xhr.open('GET', param);
-            xhr.send();
-            console.log("여기까지 완료", xhr)
+            setStorageUrl(param)
           })
           .catch((error) => {
             console.log("이미지 다운 실패 오류",error)
@@ -38,7 +32,7 @@ export default function ProductWrite(){
     // 상품 등록 함수
     const onSubmit = async (data : any)=>{
         const db = getFirestore(fireBaseApp)
-        await addDoc(collection(db, "productWrite"),{ ...data })
+        await addDoc(collection(db, "productWrite"),{ ...data, brandImage:storageUrl})
         router.push ('/productList')
         console.log(data)
     }

@@ -3,6 +3,7 @@ import * as S from './writer.style'
 import { Formtype } from "./write.types"
 
 export default function ProductWriteUI(props : Formtype){
+    console.log(props.image.name)
     const category = ["다이어트","건강기능","운동보조","뷰티기능","한끼식사","부기차","임산부","어린이"]
     return(
         <>
@@ -19,7 +20,7 @@ export default function ProductWriteUI(props : Formtype){
                             <label htmlFor="fileTag"><img src="/image/plus-circle.svg"/></label>
                             <S.Input type="file" id="fileTag" hidden={true} onChange={props.onChangeImg} />
                         </S.ImgSection>
-                        {props.image && <S.UploadImage src={`https://firebasestorage.googleapis.com/v0/b/goodda-9aced.appspot.com/o/admin%2F${props.image?.name}?alt=media&token`} image={props.image}/>}
+                        { props.image && <S.UploadImage src={`https://firebasestorage.googleapis.com/v0/b/goodda-9aced.appspot.com/o/admin%2F${props.image?.name}?alt=media&token`} image={props.image}/> }
                     </S.UploadImageWrap>
                 <S.Title>제목과 브랜드를 입력해주세요</S.Title>
                     <section>
