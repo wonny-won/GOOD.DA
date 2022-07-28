@@ -1,4 +1,5 @@
 import { collection, getDocs , getFirestore } from "firebase/firestore";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { fireBaseApp } from "../../../../../pages/_app";
 import AdminProductListUI from "./list.presenter";
@@ -7,6 +8,7 @@ import AdminProductListUI from "./list.presenter";
 export default function AdminProductList(){
     const [data,setData] = useState<never[] | any>([])
     const dataList:any = []
+    const router = useRouter()
     useEffect(()=>{
         const getList = async ()=>{
             const db = getFirestore(fireBaseApp)
@@ -19,5 +21,6 @@ export default function AdminProductList(){
         getList()
     },[])
 
-    return <AdminProductListUI data={data}/>
+    return (<AdminProductListUI data={data}
+                               router={router}/>)
 }
