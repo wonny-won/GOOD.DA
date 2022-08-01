@@ -7,19 +7,19 @@ import { useRouter } from "next/router";
 export default function ProductDetail(){
     const router = useRouter()
     const [data,setData] = useState({})
-    // const [isActive,setIsactive] = useState(false)
+    const [isActive,setIsactive] = useState(false)
     useEffect(()=>{
         const getDetailDoc = async()=>{
+            console.log("실행한다")
             const db = getFirestore(fireBaseApp)
             const docRef = doc(db, "productWrite",`${router.query.id}`);
             const docSnap = await getDoc(docRef)
             if(docSnap.exists()){
-                // console.log(docSnap.data())
                 setData({...docSnap.data()})
             }
         }
-        // setIsactive(true) 
+        setIsactive(true) 
         getDetailDoc()
-    },[])
+    },[isActive])
     return <ProductDetailUI  data={data}/>
 }
